@@ -8,4 +8,5 @@
 - ruby ``2.7.1``
 - postgresql
 - bootstrap ``5.1.3``
+- dotenv-rails ``2.1.1``
 
