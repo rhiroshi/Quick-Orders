@@ -1,22 +1,25 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: cesar
-  password: kele060990
-  host: localhost
+  # username: postgres
+  # password: postgres
+  # host: 127.0.0.1
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  port: <%= ENV['DATABASE_PORT'] || '5432' %>
+  host: <%= ENV['DATABASE_HOST'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: Quick_Orders_development
-  
+  database: task_scheduler_development
+
 test:
   <<: *default
-  database: Quick_Orders_test
+  database: task_scheduler_test
 
 production:
   <<: *default
-  database: Quick_Orders_production
-  username: Quick_Orders
-  password: <%= ENV['QUICK_ORDERS_DATABASE_PASSWORD'] %>
+  database: task_scheduler_production
+  username: task_scheduler
+  password: <%= ENV['TASK_SCHEDULER_DATABASE_PASSWORD'] %>
