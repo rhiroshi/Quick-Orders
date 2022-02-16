@@ -10,3 +10,6 @@
 - bootstrap ``5.1.3``
 - dotenv-rails ``2.1.1``
 
+# Mockup
+
+<a href="https://github.com/derikbf/Quick-Orders/blob/master/app/assets/images//mockup.pdf" target="_blank">Acessar Link</a>
