@@ -1,10 +1,11 @@
 # Welcome Hackaton - Yellow Group
 
+# Project Quick Orders
 
+## Stack
 
-# Stack
-**ruby on rails -v 6.1.4.6**
-**ruby -v 2.7.1**
-**db postgresql**
-**Bootstrap -v 5.1.3**
+- ruby on rails ``6.1.4.6``
+- ruby ``2.7.1``
+- postgresql
+- bootstrap ``5.1.3``
 
