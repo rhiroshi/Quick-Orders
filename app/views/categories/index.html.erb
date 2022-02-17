@@ -1,0 +1,28 @@
+<h1>CATEGORIAS</h1>
+<br>
+<%= link_to 'NOVA CATEGORIA', new_category_path, class: "btn btn-secondary" %>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NOME</th>
+      <th class="text-center">EDITAR/DELETAR</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.title %></td>
+        <td class="text-center">
+          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-info" %>
+          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger", method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

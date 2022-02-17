@@ -19,8 +19,15 @@ import "bootstrap"
 // Import the specific modules you may need (Modal, Alert, etc)
 import { Tooltip, Popover } from "bootstrap"
 
+//Confirmation Message
+import 'sweetalert'
+
+
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
+
+//Flash Message display
+global.toastr = require("toastr")
 
 // If you're using Turbolinks. Otherwise simply use: jQuery(function () {
 document.addEventListener("turbolinks:load", () => {
@@ -35,3 +42,6 @@ document.addEventListener("turbolinks:load", () => {
         return new Popover(popoverTriggerEl)
     })
 })
+
+// FontAwesome free for icons
+import "@fortawesome/fontawesome-free/css/all"
