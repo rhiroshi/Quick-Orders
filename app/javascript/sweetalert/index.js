@@ -8,13 +8,12 @@ import Rails from '@rails/ujs'
 Rails.confirm = function (message, element) {
   const swalWithBootstrap = swal.mixin({
     customClass: {
-      confirmButton: 'btn btn-success',
-      cancelButton: 'btn btn-info'
+      confirmButton: 'btn btn-secondary',
+      cancelButton: 'btn btn-warning'
     },
     buttonsStyling: false
   })
 
-  console.log('alert starting')
 
   swalWithBootstrap.fire({
     html: message,
@@ -29,5 +28,5 @@ Rails.confirm = function (message, element) {
       element.click()
     }
   })
-  console.log('alert ended')
+
 }
