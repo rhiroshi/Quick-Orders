@@ -1,0 +1,29 @@
+<%= form_with(model: product) do |form| %>
+
+    <div class="form-group">
+        <%= form.label :name, "NOME" %>
+        <%= form.text_field :name, class: "form-control", placeholder: 'Insira o nome do produto' %>
+    </div>
+    <br>
+    <div class="form-group">
+        <%= form.label :description, "Descrição" %>
+        <%= form.text_field :description, class: "form-control", placeholder: 'Insira a descrição' %>
+    </div>
+    <br>
+    <div class="form-group">
+        <%= form.label :price, "Preço" %>
+        <%= form.number_field :price, class: "form-control", placeholder: 'Insira o preço' %>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <%= form.label :category_id, "Categoria" %>
+         <%= form.collection_select :category_id, Category.select("id, title"), :id, :title, {prompt: "Selecione a categoria"}, {class: "form-control" } %>
+    </div>      
+    <br>
+
+    <div class="form-group">
+        <%= form.submit "Registrar", class: "btn btn-primary" %>
+        <%= link_to 'Voltar', products_path, class: "btn btn-secondary" %>
+    </div>
+<% end %>

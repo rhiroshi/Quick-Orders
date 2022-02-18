@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
-    validates :title, presence: true
-    validates :title, uniqueness: true
+    validates :title, presence: { message: "Title debe existir" }
+    validates :title, uniqueness: { message: "Categoria ya existe!, escolha otro nome" }
+
+    has_many :products
 end
