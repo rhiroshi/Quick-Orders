@@ -23,7 +23,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :role, presence: true
+  validates :role, presence: "Debe seleccionar un rol"
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   validates :first_name, presence: { message: "Debes ingresar el nombre" }
