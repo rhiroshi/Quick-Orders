@@ -1,13 +1,11 @@
-<% content_for(:filter_button) do %>
-  <%= link_to ("&nbsp;Pesquisar&nbsp;").html_safe, "javascript:void(0)", class: "btn btn-default" %>
-<% end -%>
+<%= button_tag 'Pesquisar', type: :button, data: {'bs-toggle': 'modal', 'bs-target': '#search-modal'}, class: "btn btn-outline-success" %>
 
-<div class="search-form modal hide-on-print" data-backdrop="static" data-keyboard="true" tabindex="-1" role="dialog">
+<div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-modal-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><%= t :filter %></h4>
+        <h5 class="modal-title" id="search-modal-label">Filtrar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <%= content %>
