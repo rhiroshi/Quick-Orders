@@ -3,7 +3,11 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    if current_user.admin?
+      @categories = Category.all
+    else
+      @categories = Category.kept
+    end
   end
 
   # GET /categories/1 or /categories/1.json
@@ -36,6 +40,8 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
+    @category.undiscard if params.dig(:restore)
+
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to categories_url, notice: "A categoria foi atualizada com sucesso." }
@@ -49,12 +55,13 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Categoria deletada com sucesso!" }
-      format.json { head :no_content }
+    if @category.discarded?
+      flash[:alert] = "Categoria deletada previamente!"
+    else
+      flash[:notice] = "Categoria deletada com sucesso!"
+      @category.discard
     end
+    redirect_to categories_url
   end
 
   private
