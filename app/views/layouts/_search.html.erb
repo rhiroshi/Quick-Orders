@@ -1,0 +1,19 @@
+<%= button_tag 'Pesquisar', type: :button, data: {'bs-toggle': 'modal', 'bs-target': '#search-modal'}, class: "btn btn-outline-success" %>
+<% if params[:q].present? && params[:q][:_].nil? %>
+  <%= link_to "Limpar filtro", {q: {_: 1}}, class: 'btn btn-outline-light' %>
+<% end %>
+
+
+<div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="search-modal-label">Filtrar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= content %>
+      </div>
+    </div>
+  </div>
+</div>

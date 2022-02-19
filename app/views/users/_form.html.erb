@@ -1,12 +1,12 @@
 <%= form_with(model: user) do |f| %>
 
   <div class="form-group">
-    <%= f.label :first_name%><br />
+    <%= f.label I18n.t 'c.first_name' %><br />
     <%= f.text_field :first_name, class: "form-control" %>
   </div>
   <br>
   <div class="form-group">
-    <%= f.label :last_name%><br />
+    <%= f.label I18n.t 'c.last_name' %><br />
     <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <br>
@@ -16,7 +16,7 @@
   </div>
   <br>
   <div class="form-group">
-    <%= f.label :role, "Rol" %><br />
+    <%= f.label I18n.t 'c.role' %><br />
     <%= f.select :role, options_for_select(User.roles.map {|key, value| [key.titleize, User.roles.key(value)]}, @user.role), {} , class: "form-control" %>
   </div>
   <br>
@@ -34,7 +34,7 @@
   </div>
   <br>
   <div class="form-group">
-    <%= f.submit "Registrar" , class: "btn btn-secondary" %><%= link_to "Voltar", users_path, class: "btn btn-warning" %>
+    <%= f.submit "Registrar" , class: "btn btn-secondary" %> <%= link_to "Voltar", users_path, class: "btn btn-warning" %>
   </div>
     
 <% end %>

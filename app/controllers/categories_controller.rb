@@ -1,13 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :collection, only: %i[ index ]
 
   # GET /categories or /categories.json
   def index
-    if current_user.admin?
-      @categories = Category.all
-    else
-      @categories = Category.kept
-    end
   end
 
   # GET /categories/1 or /categories/1.json
@@ -65,6 +61,12 @@ class CategoriesController < ApplicationController
   end
 
   private
+    # Set category list and @search object for the search form
+    def collection
+      @search = Category.ransack(params[:q])
+      @categories = @search.result
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
