@@ -7,6 +7,7 @@ ruby '2.7.1'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+gem 'ransack'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -35,7 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_bot_rails'
-  gem 'shoulda-matchers', '~> 4.0' 
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
@@ -56,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'client_side_validations'
 
 #Genarate annotations models atributtes
-gem 'annotate' 
+gem 'annotate'
 
 #Autorization
 gem 'cancancan'

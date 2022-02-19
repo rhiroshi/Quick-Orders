@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :collection, only: %i[ index ]
 
   # GET /users or /users.json
   def index
-    @users = User.all
   end
 
   # GET /users/1 or /users/1.json
@@ -58,6 +58,12 @@ class UsersController < ApplicationController
   end
 
   private
+    # Set user list and @search object for the search form
+    def collection
+      @search = User.ransack(params[:q])
+      @users = @search.result
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -66,5 +72,5 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:email, :first_name, :last_name, :role, :password, :password_confirmation)
-    end  
+    end
 end
