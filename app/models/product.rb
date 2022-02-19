@@ -12,6 +12,8 @@
 #
 class Product < ApplicationRecord
 
+    include Discard::Model
+
     validates :name, presence: { message: "O nome do produto é obrigatório!" }
     validates :description, presence: { message: "A descrição é  obrigatória!" }
     validates :price, presence: { message: "O preço é obrigatório!" }

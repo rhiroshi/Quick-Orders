@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_02_19_053433) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_categories_on_discarded_at"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_053433) do
     t.datetime "discarded_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
