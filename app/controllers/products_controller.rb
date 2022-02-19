@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :collection, only: %i[ index ]
 
 
   def index
-    @products = Product.all
   end
 
 
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  
+
   def destroy
 
     @product.destroy
@@ -57,7 +57,12 @@ class ProductsController < ApplicationController
   end
 
   private
-    
+  # Set Product list and @search object for the search form
+  def collection
+    @search = Product.ransack(params[:q])
+    @products = @search.result
+  end
+
   def set_product
       @product = Product.find(params[:id])
     end
