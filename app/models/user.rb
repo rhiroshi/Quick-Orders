@@ -25,4 +25,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :role, presence: true
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
+  validates :first_name, presence: { message: "Debes ingresar el nombre" }
+  validates :last_name, presence: { message: "Debes ingresar el apellido" }
+  validates :email, presence: { message: "Debes ingresar el email" }
+  validates :email, uniqueness: { message: "Correo ya existe, verifique" }
+  validates :password, presence: { message: "Ingresar Contrasena" }
+
+  enum role: [:admin, :mesero, :chef]
+
+  def name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end
