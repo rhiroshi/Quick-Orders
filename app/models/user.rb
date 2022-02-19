@@ -26,39 +26,15 @@ class User < ApplicationRecord
   validates :role, presence: true
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
-  def admin?
-    role == 1
-  end
+  validates :first_name, presence: { message: "Debes ingresar el nombre" }
+  validates :last_name, presence: { message: "Debes ingresar el apellido" }
+  validates :email, presence: { message: "Debes ingresar el email" }
+  validates :email, uniqueness: { message: "Correo ya existe, verifique" }
+  validates :password, presence: { message: "Ingresar Contrasena" }
 
-  def cook?
-    role == 2
-  end
+  enum role: [:admin, :mesero, :chef]
 
-  def waiter?
-    role == 3
-  end
-
-  def role_name
-    return 'Admin' if role == 1
-    return 'Cook' if role == 2
-    return 'Waiter' if role == 3
-  end
-
-  def active?
-    discarded_at.nil?
-  end
-
-  def destroy
-    self.discarded_at = Time.now
-    save
-  end
-
-  def activate!
-    self.discarded_at = nil
-    save
-  end
-
-  def active_for_authentication?
-    super && active?
+  def name
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 end
