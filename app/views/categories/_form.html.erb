@@ -5,6 +5,11 @@
     <%= form.text_field :title, class: "form-control", placeholder: 'Ingrese o nome' %>
   </div>
   <br>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= check_box_tag :restore, class: "checkbox" %>
+    Restaurar registro eliminado
+  <% end if category.discarded? %>
+  <br>
   <div class="form-group">
     <%= form.submit "Registrar", class: "btn btn-secondary" %>
     <%= link_to 'Voltar', categories_path, class: "btn btn-warning" %>

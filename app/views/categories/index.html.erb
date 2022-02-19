@@ -21,6 +21,9 @@
           <th>ID</th>
           <th>NOME</th>
           <th class="text-center">EDITAR/DELETAR</th>
+          <% if current_user.admin? %>
+            <th class="text-center">DELETADO</th>
+          <% end %>
         </tr>
       </thead>
 
@@ -33,6 +36,7 @@
               <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary" %>
               <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger", method: :delete, data: { confirm: 'Tem certeza?' } %>
             </td>
+            <td class="text-center"><%= category.discarded? ? '<i class="fas fa-check-double"></i>'.html_safe : '' %></td>
           </tr>
         <% end %>
       </tbody>

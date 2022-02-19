@@ -8,6 +8,9 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+
+    include Discard::Model
+    
     validates :title, presence: { message: "Title debe existir" }
     validates :title, uniqueness: { message: "Categoria ya existe!, escolha otro nome" }
 
