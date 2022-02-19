@@ -1,0 +1,17 @@
+<% content_for(:filter_button) do %>
+  <%= link_to ("&nbsp;Pesquisar&nbsp;").html_safe, "javascript:void(0)", class: "btn btn-default" %>
+<% end -%>
+
+<div class="search-form modal hide-on-print" data-backdrop="static" data-keyboard="true" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= t :filter %></h4>
+      </div>
+      <div class="modal-body">
+        <%= content %>
+      </div>
+    </div>
+  </div>
+</div>
