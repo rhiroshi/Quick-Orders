@@ -25,4 +25,40 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :role, presence: true
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
+  def admin?
+    role == 1
+  end
+
+  def cook?
+    role == 2
+  end
+
+  def waiter?
+    role == 3
+  end
+
+  def role_name
+    return 'Admin' if role == 1
+    return 'Cook' if role == 2
+    return 'Waiter' if role == 3
+  end
+
+  def active?
+    discarded_at.nil?
+  end
+
+  def destroy
+    self.discarded_at = Time.now
+    save
+  end
+
+  def activate!
+    self.discarded_at = nil
+    save
+  end
+
+  def active_for_authentication?
+    super && active?
+  end
 end
