@@ -57,3 +57,9 @@ gem 'client_side_validations'
 
 #Genarate annotations models atributtes
 gem 'annotate' 
+
+#Autorization
+gem 'cancancan'
+
+#Soft Delete
+gem 'discard'
