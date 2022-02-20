@@ -17,6 +17,9 @@
       <strong>Status:</strong>
       <span class="badge <%= status_klass(@order.status) %>"><%= @order.status_name %></span>
     </p>
+    <% if @order.ready? %>
+      <%= link_to "MARCAR COMO ENTREGUE", report_status_order_path(@order.id, status: :finished), method: :post, class: 'btn btn-success' %>
+    <% end %>
     
     
   </div>
@@ -47,5 +50,6 @@
     <%= link_to 'Voltar', orders_path, class: "btn btn-warning" %>
   </div>
 </div>
+
 
 
