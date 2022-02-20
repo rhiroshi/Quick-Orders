@@ -20,5 +20,25 @@
   <%= @order.status %>
 </p>
 
+<h3>Itens</h3>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Observation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_products.each do |op| %>
+      <tr>
+        <td><%= op.product.name %></td>
+        <td><%= op.quantity %></td>
+        <td><%= op.observation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
