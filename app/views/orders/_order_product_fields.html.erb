@@ -1,0 +1,15 @@
+<div class="nested-fields border border-white">
+  <div class="field form-group">
+    <%= f.label :product_id %>
+    <%= f.select :product_id, options_for_select(Product.all.pluck(:name, :id), f.object.product_id), {include_blank: true} , class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :observation %>
+    <%= f.text_field :observation, class: 'form-control' %>
+  </div>
+  <%= link_to_remove_association 'Remove item', f %>
+</div>

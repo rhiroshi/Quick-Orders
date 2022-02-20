@@ -11,14 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :client_name %>
-    <%= form.text_field :client_name %>
+    <%= form.text_field :client_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :table %>
-    <%= form.number_field :table %>
+    <%= form.number_field :table, class: 'form-control' %>
+  </div>
+
+  <%= form.fields_for :order_products do |order_product|  %>
+    <%= render 'order_product_fields', f: order_product %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'Add Item', form, :order_products %>
   </div>
 
   <div class="actions">
