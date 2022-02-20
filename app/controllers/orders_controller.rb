@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ edit update destroy ]
+  before_action :collection, only: %i[ index ]
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
   end
 
   # GET /orders/1 or /orders/1.json
@@ -59,6 +59,12 @@ class OrdersController < ApplicationController
   end
 
   private
+    def collection
+      default_order = :status
+      @search = Order.ransack(params[:q])
+      @orders = @search.result.order(default_order)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
