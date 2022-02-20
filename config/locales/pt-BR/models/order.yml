@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      order: 'Pedido'
+    attributes:
+      order:
+        table: 'Mesa'
+        client_name: 'Cliente'
+        user: 'Atendente'
+        status: 'Status'
+        status_name:
+          in_line: 'Aberto'
+          preparing: 'Preparando'
+          ready: 'Pronto'
+          canceled: 'Cancelado'
+          finished: 'Finalizado'
