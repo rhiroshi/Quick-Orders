@@ -9,6 +9,10 @@ class Order < ApplicationRecord
 
   belongs_to :user
 
+  def in_line?
+    status == 'in_line'
+  end
+
   def status_name
     return I18n.t("activerecord.attributes.order.status_name.#{status}")
   end
