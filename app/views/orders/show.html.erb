@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @order.ready? %>
+  <%= link_to "MARCAR COMO ENTREGUE", report_status_order_path(@order.id, status: :finished), method: :post, class: 'btn btn-success' %>
+<% end %>
+
 <p>
   <strong>Client name:</strong>
   <%= @order.client_name %>
