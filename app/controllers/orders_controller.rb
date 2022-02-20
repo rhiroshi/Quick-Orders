@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ edit update destroy ]
+  before_action :set_order, only: %i[ edit update destroy report_status ]
   before_action :collection, only: %i[ index ]
 
   # GET /orders or /orders.json
@@ -56,6 +56,12 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: "Pedido excluido com sucesso." }
       format.json { head :no_content }
     end
+  end
+
+  # POST /orders/report_status/:id with :status param
+  def report_status
+    @order.update(status: params[:status])
+    redirect_to order_path(@order.id)
   end
 
   private
