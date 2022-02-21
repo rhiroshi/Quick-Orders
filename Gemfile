@@ -33,7 +33,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'devise-i18n', '~> 1.10'
 gem 'rails-i18n', '~> 6.0'
-gem 'webpacker-pwa'
 
 
 group :development, :test do
