@@ -1,15 +1,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+
+development:
+  <<: *default
+  database: task_scheduler_development
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   port: <%= ENV['DATABASE_PORT'] || '5432' %>
   host: <%= ENV['DATABASE_HOST'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-development:
-  <<: *default
-  database: task_scheduler_development
 
 test:
   <<: *default
@@ -19,4 +19,4 @@ production:
   <<: *default
   database: task_scheduler_production
   username: task_scheduler
-  password: <%= ENV['TASK_SCHEDULER_DATABASE_PASSWORD'] %>
+  # password: <%= ENV['TASK_SCHEDULER_DATABASE_PASSWORD'] %>
