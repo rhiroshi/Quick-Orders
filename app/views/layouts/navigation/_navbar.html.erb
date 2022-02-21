@@ -17,10 +17,6 @@
                   <%= link_to '<i class="fas fa-sign-out-alt"></i> Encerrar sessão'.html_safe, destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </ul>
           </li>
-        <% else %>
-          <ul class="navbar-nav my-2 my-sm-0">
-            <%= link_to "Entrar", new_user_session_path, class: "btn btn-outline-light" %>
-          </ul>
         <% end %>
       </ul>
     </div>
