@@ -68,3 +68,7 @@ gem 'cancancan'
 
 #Soft Delete
 gem 'discard'
+
+#charts
+gem "chartkick"
+gem "groupdate"
