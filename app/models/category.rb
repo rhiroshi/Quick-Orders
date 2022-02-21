@@ -11,9 +11,8 @@ class Category < ApplicationRecord
 
     include Discard::Model
     
-    validates :title, presence: { message: "Title debe existir" }
-    
-    validates :title, uniqueness:  { case_sensitive: false }, { message: "Categoria deve ser única." }
+    validates :title, presence: true
 
+    validates :title, uniqueness:  { case_sensitive: false }
     has_many :products
 end
