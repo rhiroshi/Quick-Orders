@@ -18,32 +18,35 @@
 
     </div>
     <div class="card-body">
-      <table class="table table-dark table-striped">
-        <thead class="text-center align-middle">
-          <tr>
-            <th>ID</th>
-            <th><%= User.human_attribute_name(:email) %></th>
-            <th><%= User.human_attribute_name(:first_name) %></th>
-            <th><%= User.human_attribute_name(:role) %></th>
-          </tr>
-        </thead>
-
-        <tbody class="text-center align-middle">
-          <% @users.each do |user| %>
-           <tr>
-              <td><%= user.id %></td>
-              <td><%= user.email %></td>
-              <td><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></td>
-              <td><%= user.role_name %></td>
-              <td class="d-flex justify-content-end text-center">
-                <%= link_to '<i class="fa-solid fa-eye"></i>'.html_safe, user, class: "btn btn-secondary icons-margin" %>
-                <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_user_path(user), class: "btn btn-secondary icons-margin" %>
-                <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, user, class: "btn btn-danger icons-margin", method: :delete, data: { confirm: 'Tem certeza?' } %>
-              </td>
+      <div class="table-responsive">
+        <table class="table table-dark table-striped">
+          <thead class="text-center align-middle">
+            <tr>
+              <th>ID</th>
+              <th><%= User.human_attribute_name(:email) %></th>
+              <th><%= User.human_attribute_name(:first_name) %></th>
+              <th><%= User.human_attribute_name(:role) %></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody class="text-center align-middle">
+            <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></td>
+                <td><%= user.role_name %></td>
+                <td class="d-flex justify-content-end text-center">
+                  <%= link_to '<i class="fa-solid fa-eye"></i>'.html_safe, user, class: "btn btn-secondary icons-margin" %>
+                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_user_path(user), class: "btn btn-secondary icons-margin" %>
+                  <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, user, class: "btn btn-danger icons-margin", method: :delete, data: { confirm: 'Tem certeza?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+        
     </div>
     
   </div>
