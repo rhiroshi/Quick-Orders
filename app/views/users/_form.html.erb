@@ -1,40 +1,41 @@
-<%= form_with(model: user) do |f| %>
-
-  <div class="form-group">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, class: "form-control" %>
+<%= form_with(model: user, class: 'row g-3') do |f| %>
+  <div class="col-md-4">
+    <%= f.label :first_name, class: 'form-label' %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: 'Nome do funcionário' %>
   </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, class: "form-control" %>
+  <div class="col-md-4">
+    <%= f.label :last_name, class: 'form-label' %>
+    <%= f.text_field :last_name, class: "form-control", placeholder: 'Sobrenome do funcionário' %>
   </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-  </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :role %><br />
+  
+  <div class="col-md-4">
+    <%= f.label :role, class: 'form-label' %>
     <%= f.select :role, options_for_select(User.roles.map {|key, value| [key.titleize, User.roles.key(value)]}, @user.role), {} , class: "form-control" %>
   </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :password %>
+
+  <div class="col-md-12">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: 'Email do Funcionário'  %>
+  </div>
+
+  <div class="col-md-6">
+    <%= f.label :password, class: 'form-label' %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> caracteres minimos)</em>
     <% end %><br />
-    <%= f.password_field :password, {autocomplete: "password", class: "form-control"} %>
+    <%= f.password_field :password, {autocomplete: "password", class: "form-control", placeholder: 'Minimo 6 dígitos' }%>
   </div>
-  <br>
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
+
+  <div class="col-md-6">
+    <%= f.label :password_confirmation, class: 'form-label' %>
     <%= f.password_field :password_confirmation, { autocomplete: "password", class: "form-control" }%>
   </div>
-  <br>
-  <div class="form-group">
-    <%= f.submit "Registrar" , class: "btn btn-secondary" %> <%= link_to "Voltar", users_path, class: "btn btn-warning" %>
+
+
+  
+  <div class="col-12">
+    <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, users_path, class: "btn btn-secondary icons-margin" %>
+    <%= f.submit "Registrar" , class: "btn btn-secondary" %>
   </div>
 
 <% end %>

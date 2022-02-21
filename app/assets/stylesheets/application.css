@@ -44,3 +44,11 @@ font-size: 12px;
 .icons-margin {
   margin-right: 12px;
 }
+
+.divisor {
+  opacity: 0.1;
+}
+
+.font-size-info {
+  font-size: 1.4rem;
+}

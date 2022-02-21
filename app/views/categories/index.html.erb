@@ -24,6 +24,7 @@
           <tr>
             <th>ID</th>
             <th><%= Category.human_attribute_name(:title).upcase %></th>
+            <th>Quant. Produtos</th>
           </tr>
         </thead>
 
@@ -32,6 +33,7 @@
             <tr>
               <td><%= category.id %></td>
               <td><%= category.title %></td>
+              <td><%= category.products.count %></td>
               <td class="d-flex justify-content-end text-center">
                 <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary icons-margin" %>
                 <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger", method: :delete, data: { confirm: 'Tem certeza?' } %>
