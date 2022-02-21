@@ -1,21 +1,42 @@
-<h1>Dashboard</h1>
-<div class="filters">
-  <%= form_tag dashboard_index_path, method: :get, class: 'p-2 mb-3 border border-white' do %>
-    <div class="form-group">
-      <%= label 'q', 'date_gteq', 'Data maior ou igual que' %><br />
-      <%= date_field 'q', 'date_gteq', class: 'form-group', value: params[:q][:date_gteq] %>
+<div class="container py-5 h-100">
+  <div class="card bg-dark shadow">
+    <div class="card-header bg-dark m-3 p-3">
+        <h3 class="d-inline-block">Dashboard</h3>
+        <hr>
     </div>
-    <div class="form-group">
-      <%= label 'q', 'date_lteq', 'Data menor ou igual que' %><br />
-      <%= date_field 'q', 'date_lteq', class: 'form-group', value: params[:q][:date_lteq] %>
+    <div class="card-body">
+      <div class="filters">
+        <%= form_tag dashboard_index_path, method: :get, class: 'p-2 mb-3' do %>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="form-group">
+                <%= label 'q', 'date_gteq', 'Data maior ou igual que' %><br />
+                <%= date_field 'q', 'date_gteq', class: 'form-control', value: params[:q][:date_gteq] %>
+              </div>  
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="form-group">
+                <%= label 'q', 'date_lteq', 'Data menor ou igual que' %><br />
+                <%= date_field 'q', 'date_lteq', class: 'form-control', value: params[:q][:date_lteq] %>
+              </div>  
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <br>
+              <%= button_tag 'Filtrar', class: "btn btn-secondary" %>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+
+      <%= dashboard_card("Quantidade de pedidos") do %>
+        <%= @order_quantity %>
+      <% end %>
+      <%= dashboard_card("Faturamento") do %>
+        <%= number_to_currency @total_renevue %>
+      <% end %>
     </div>
-    <%= button_tag 'Filtrar' %>
-  <% end %>
+    
+  </div>
 </div>
 
-<%= dashboard_card("Quantidade de pedidos") do %>
- <%= @order_quantity %>
-<% end %>
-<%= dashboard_card("Faturamento") do %>
- <%= number_to_currency @total_renevue %>
-<% end %>

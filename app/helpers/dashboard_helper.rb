@@ -18,8 +18,7 @@ module DashboardHelper
   #   </div>
   # </div>
   def dashboard_card(title, &block)
-    content_tag(:div, class: "col-xl-3 col-md-6 mb-4") do
-      content_tag(:div, class: 'card border-left-primary shadow h-100 py-2 border border-white bg-dark') do
+      content_tag(:div, class: 'card border-left-primary shadow h-100 py-2 bg-dark') do
         content_tag(:div, class: 'card-body') do
           content_tag(:div, class: 'row no-gutters align-items-center') do
             content_tag(:div, class: 'col mr-2') do
@@ -29,6 +28,5 @@ module DashboardHelper
           end
         end
       end
-    end
   end
 end

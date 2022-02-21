@@ -21,25 +21,27 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-dark table-striped">
-          <thead class="text-center align-middle">
+          <thead>
             <tr>
-              <th>ID</th>
-              <th><%= Category.human_attribute_name(:title).upcase %></th>
-              <th>Quant. Produtos</th>
+              <th class="text-center">ID</th>
+              <th class="text-center"><%= Category.human_attribute_name(:title).upcase %></th>
+              <th class="text-center">Quant. Produtos</th>
+              <th class="text-center">REMOVIDO</th>
+              <th class="text-center">OPÇÕES</th>
             </tr>
           </thead>
 
-          <tbody class="text-center align-middle">
+          <tbody>
             <% @categories.each do |category| %>
               <tr>
-                <td><%= category.id %></td>
-                <td><%= category.title %></td>
-                <td><%= category.products.count %></td>
-                <td class="d-flex justify-content-end text-center">
-                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary icons-margin" %>
-                  <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger", method: :delete, data: { confirm: 'Tem certeza?' } %>
-                </td>
+                <td class="text-center"><%= category.id %></td>
+                <td class="text-center"><%= category.title %></td>
+                <td class="text-center"><%= category.products.count %></td>
                 <td class="text-center"><%= category.discarded? ? '<i class="fas fa-check-double"></i>'.html_safe : '' %></td>
+                <td class="text-center">
+                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary icons-margin" %> 
+                  <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger icons-margin", method: :delete, data: { confirm: 'Tem certeza?' } %>
+                </td>
               </tr>
             <% end %>
           </tbody>

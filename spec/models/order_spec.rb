@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id          :bigint           not null, primary key
+#  client_name :string
+#  table       :integer
+#  user_id     :bigint           not null
+#  status      :integer          default("in_line")
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do

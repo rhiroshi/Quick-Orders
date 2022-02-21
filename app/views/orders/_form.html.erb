@@ -9,6 +9,7 @@
     <%= form.number_field :table, class: 'form-control' %>
   </div>
   <br>
+  <h3>itens do Pedido</h3>
   <%= form.fields_for :order_products do |order_product|  %>
     <%= render 'order_product_fields', f: order_product %>
   <% end %>
