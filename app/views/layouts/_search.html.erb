@@ -1,4 +1,4 @@
-<%= button_tag 'Pesquisar', type: :button, data: {'bs-toggle': 'modal', 'bs-target': '#search-modal'}, class: "btn btn-outline-success" %>
+<%= button_tag '<i class="fa-solid fa-magnifying-glass"></i>'.html_safe, type: :button, data: {'bs-toggle': 'modal', 'bs-target': '#search-modal'}, class: "btn btn-secondary" %>
 <% if params[:q].present? && params[:q][:_].nil? %>
   <%= link_to "Limpar filtro", {q: {_: 1}}, class: 'btn btn-outline-light' %>
 <% end %>
