@@ -39,7 +39,9 @@
                 <td class="text-center"><span class="badge <%= status_klass(order.status) %>"><%= order.status_name %></span></td>
                 <td class="text-center">
                   <%= link_to '<i class="fa-solid fa-eye"></i>'.html_safe, order, class: "btn btn-secondary icons-margin" %>
-                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_order_path(order), class: "btn btn-secondary icons-margin" %>
+                  <% unless order.canceled? || order.finished? %>  
+                    <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_order_path(order), class: "btn btn-secondary icons-margin" %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
