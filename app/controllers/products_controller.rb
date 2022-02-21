@@ -4,6 +4,13 @@ class ProductsController < ApplicationController
 
 
   def index
+    def index
+      if current_user.admin?
+        @products = Product.all
+      else
+        @products = Product.kept
+      end
+    end
   end
 
 
@@ -34,6 +41,8 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product.undiscard if params.dig(:restore)
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "O produto foi atualizado com sucesso." }
@@ -47,13 +56,14 @@ class ProductsController < ApplicationController
 
 
   def destroy
-
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: "Produto removido!" }
-      format.json { head :no_content }
+    if @product.discarded?
+      flash[:alert] = "Produto deletado previamente!"
+    else
+      flash[:notice] = "Produto deletado com sucesso!"
+      @product.discard
     end
+
+    redirect_to products_url
   end
 
   private

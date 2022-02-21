@@ -36,6 +36,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    @user.undiscard if params.dig(:restore)
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url, notice: "O funcionario foi atualizado com sucesso." }

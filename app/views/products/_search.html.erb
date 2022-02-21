@@ -1,26 +1,30 @@
 <%= search_form_for @search do |f| %>
   <div class="form-group">
     <%= f.label :name_cont, label: controller_name.classify.constantize.human_attribute_name(:name) %>
-    <%= f.search_field :name_cont %>
+    <%= f.search_field :name_cont, class: "form-control" %>
   </div>
+  <br>
   <div class="form-group">
     <%= f.label :description_cont, label: controller_name.classify.constantize.human_attribute_name(:description) %>
-    <%= f.search_field :description_cont %>
+    <%= f.search_field :description_cont, class: "form-control" %>
   </div>
+  <br>
   <div class="form-group">
     <%= f.label :category_id_eq, label: controller_name.classify.constantize.human_attribute_name(:role) %>
-    <%= f.select :category_id_eq, options_for_select(Category.all.pluck(:title, :id), @search.category_id_eq), include_blank: true %>
+    <%= f.select :category_id_eq, options_for_select(Category.all.pluck(:title, :id), @search.category_id_eq),{},{ include_blank: true, class: "form-control" } %>
   </div>
-
+  <br>
   <h4><%= controller_name.classify.constantize.human_attribute_name(:price) %></h4>
   <div class="form-group">
     <%= f.label :price_gteq, label: controller_name.classify.constantize.human_attribute_name(:price) %>
-    <%= f.search_field :price_gteq %>
+    <%= f.search_field :price_gteq, class: "form-control" %>
   </div>
+  <br>
   <div class="form-group">
     <%= f.label :price_lteq, label: controller_name.classify.constantize.human_attribute_name(:price) %>
-    <%= f.search_field :price_lteq %>
+    <%= f.search_field :price_lteq, class: "form-control" %>
   </div>
-  <%= f.submit "Search", class: 'btn btn-light' %>
+  <br>
+  <%= f.submit "Search", class: 'btn btn-secondary' %>
   <%= f.button 'Clear', type: :reset, class: 'btn btn-light' %>
 <% end -%>

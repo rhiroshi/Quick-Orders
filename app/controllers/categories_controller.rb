@@ -4,6 +4,11 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
+    if current_user.admin?
+      @categories = Category.all
+    else
+      @categories = Category.kept
+    end
   end
 
   # GET /categories/1 or /categories/1.json
