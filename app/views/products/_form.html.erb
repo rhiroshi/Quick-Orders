@@ -21,6 +21,11 @@
          <%= form.collection_select :category_id, Category.select("id, title"), :id, :title, {prompt: "Selecione a categoria"}, {class: "form-control" } %>
     </div>      
     <br>
+    <%= content_tag :div, class: 'form-group' do %>
+        <%= check_box_tag :restore, class: "checkbox" %>
+        Restaurar registro eliminado
+    <% end if product.discarded? %>
+    <br>
 
     <div class="form-group">
         <%= form.submit "Registrar", class: "btn btn-secondary" %>
