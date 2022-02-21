@@ -23,7 +23,6 @@ import { Tooltip, Popover } from "bootstrap"
 //Confirmation Message
 import 'sweetalert'
 
-
 // The stylesheet location we created earlier
 require("../stylesheets/application.scss")
 

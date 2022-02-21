@@ -36,3 +36,7 @@ font-size: 12px;
 .text-white{
     color: white !important;
 }
+
+.text-lighter {
+  font-weight: lighter;
+}

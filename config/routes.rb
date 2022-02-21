@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :products
   resources :users
   root to: 'home#index'
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
 end
