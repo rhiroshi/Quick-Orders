@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  authorize_resource :class => false
+
   def index
     params[:q] ||= {}
     params[:q][:date_gteq] ||= Date.today

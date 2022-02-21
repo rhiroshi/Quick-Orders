@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
           <div class="d-flex justify-content-end">
-            <%= link_to '<i class="fa-solid fa-plus"></i>'.html_safe, new_category_path, class: "btn btn-secondary icons-margin " %>
+            <%= link_to '<i class="fa-solid fa-plus"></i>'.html_safe, new_category_path, class: "btn btn-secondary icons-margin" if can? :new, Category %>
 
             <%= search do %>
               <%= render 'search' %>
@@ -26,8 +26,10 @@
               <th class="text-center">ID</th>
               <th class="text-center"><%= Category.human_attribute_name(:title).upcase %></th>
               <th class="text-center">Quant. Produtos</th>
-              <th class="text-center">REMOVIDO</th>
-              <th class="text-center">OPÇÕES</th>
+              <% if current_user.admin? %>
+                <th class="text-center">REMOVIDO</th>
+                <th class="text-center">OPÇÕES</th>
+              <% end %>
             </tr>
           </thead>
 
@@ -39,8 +41,8 @@
                 <td class="text-center"><%= category.products.count %></td>
                 <td class="text-center"><%= category.discarded? ? '<i class="fas fa-check-double"></i>'.html_safe : '' %></td>
                 <td class="text-center">
-                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary icons-margin" %> 
-                  <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger icons-margin", method: :delete, data: { confirm: 'Tem certeza?' } %>
+                  <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_category_path(category), class: "btn btn-secondary icons-margin" if can? :edit, Category %> 
+                  <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, category, class: "btn btn-danger icons-margin", method: :delete, data: { confirm: 'Tem certeza?' } if can? :destroy, Category %>
                 </td>
               </tr>
             <% end %>

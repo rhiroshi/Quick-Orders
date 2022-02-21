@@ -1,4 +1,6 @@
 class KitchenController < ApplicationController
+  authorize_resource :class => false
+  
   def index
     @orders = Order.where(status: [0,1,2]).order(:status)
   end

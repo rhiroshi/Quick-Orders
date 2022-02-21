@@ -44,4 +44,12 @@ class User < ApplicationRecord
   def name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
+
+  def active?
+    discarded_at.nil?
+  end
+  
+  def active_for_authentication?
+    super && active?
+  end
 end
