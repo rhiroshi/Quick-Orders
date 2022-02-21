@@ -10,9 +10,14 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.mesero?
-      can :manage, :all
+      can :read, Category
+      can :read, Product
+      can [:new, :edit, :update, :create], Order
     elsif user.chef?
-      can :manage, :all
+      can :read, Category
+      can :read, Product
+      can :update, Order
+      can :manage, :kitchen
     end
     #
     # The first argument to `can` is the action you are giving the user

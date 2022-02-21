@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :collection, only: %i[ index ]
+
 
   # GET /users or /users.json
   def index
@@ -49,15 +51,18 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "Funcionario deletado com sucesso!" }
-      format.json { head :no_content }
+  def destroy
+    if @user.discarded?
+      flash[:alert] = "Funcionario deletado previamente!"
+    else
+      flash[:notice] = "Funcionario deletado com sucesso!"
+      @user.discard
     end
+
+    redirect_to users_url
   end
+
 
   private
     # Set user list and @search object for the search form
