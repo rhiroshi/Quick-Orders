@@ -7,11 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="bg-dark">
-    
+
     <%= render "layouts/navigation/navbar" %>
     <hr class="text-gray">
     <div class="container text-white">
@@ -19,7 +20,7 @@
 
         <%= yield %>
     </div>
-    
-      
+
+
   </body>
 </html>
