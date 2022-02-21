@@ -1,4 +1,21 @@
 <h1>Dashboard</h1>
+<div class="filters">
+  <%= form_tag dashboard_index_path, method: :get, class: 'p-2 mb-3 border border-white' do %>
+    <div class="form-group">
+      <%= label 'q', 'date_gteq', 'Data maior ou igual que' %><br />
+      <%= date_field 'q', 'date_gteq', class: 'form-group', value: params[:q][:date_gteq] %>
+    </div>
+    <div class="form-group">
+      <%= label 'q', 'date_lteq', 'Data menor ou igual que' %><br />
+      <%= date_field 'q', 'date_lteq', class: 'form-group', value: params[:q][:date_lteq] %>
+    </div>
+    <%= button_tag 'Filtrar' %>
+  <% end %>
+</div>
+
+<%= dashboard_card("Quantidade de pedidos") do %>
+ <%= @order_quantity %>
+<% end %>
 <%= dashboard_card("Faturamento") do %>
- 1234 reais
+ <%= number_to_currency @total_renevue %>
 <% end %>
