@@ -47,11 +47,3 @@ document.addEventListener("turbolinks:load", () => {
 
 // FontAwesome free for icons
 import "@fortawesome/fontawesome-free/css/all"
-
-
-window.addEventListener('load', () => {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then(registration => {
-      console.log('ServiceWorker registered: ', registration)
-    });
-});
