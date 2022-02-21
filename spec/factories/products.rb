@@ -15,5 +15,8 @@ FactoryBot.define do
     name { "MyString" }
     description { "MyText" }
     price { "9.99" }
+    after :build do |product|
+      product.category = create(:category)
+    end
   end
 end

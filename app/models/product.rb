@@ -14,10 +14,11 @@ class Product < ApplicationRecord
 
     include Discard::Model
 
-    validates :name, presence: { message: "O nome do produto é obrigatório!" }
-    validates :description, presence: { message: "A descrição é  obrigatória!" }
-    validates :price, presence: { message: "O preço é obrigatório!" }
-    validates :category_id, presence: { message: "A categoria é obrigatória!" }
+    validates :name, presence: true
+    validates :name, uniqueness: { case_sensitive: false }
+    validates :description, presence: true
+    validates :price, presence: true
+    validates :category_id, presence: true
 
     belongs_to :category
 end
