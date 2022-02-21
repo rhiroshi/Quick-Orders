@@ -1,49 +1,50 @@
-<div class="card bg-dark border-light">
-    <div class="card-header">
-        <h3>PEDIDOS CADASTRADOS</h3>
-
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6">
-                <%= link_to 'NOVO PEDIDO', new_order_path, class: "btn btn-secondary" %>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
-              <div class="d-flex justify-content-end">
-                <%= search do %>
-                  <%= render 'search' %>
-                <% end %>
-              </div>
-            </div>
+<div class="container py-5 h-100">
+  <div class="card bg-dark shadow">
+    <div class="card-header bg-dark m-3 p-3">
+      
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <h3 class="d-inline-block">Registro de Pedidos</h3>
         </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="d-flex justify-content-end">
+            <%= link_to '<i class="fa-solid fa-plus"></i>'.html_safe, new_order_path, class: "btn btn-secondary icons-margin " %>
+            <%= search do %>
+              <%= render 'search' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="card-body">
       <table class="table table-dark table-striped">
-        <thead>
+        <thead class="text-center align-middle">
           <tr>
-            <th><%= Order.human_attribute_name(:client_name) %></th>
-            <th><%= Order.human_attribute_name(:table) %></th>
-            <th><%= Order.human_attribute_name(:user) %></th>
-            <th><%= Order.human_attribute_name(:status) %></th>
-            <th colspan="3"></th>
+            <th><%= Order.human_attribute_name(:client_name).upcase %></th>
+            <th><%= Order.human_attribute_name(:table).upcase %></th>
+            <th><%= Order.human_attribute_name(:user).upcase %></th>
+            <th><%= Order.human_attribute_name(:status).upcase %></th>
+            
           </tr>
         </thead>
 
-        <tbody>
+        <tbody class="text-center align-middle">
           <% @orders.each do |order| %>
             <tr>
               <td><%= order.client_name %></td>
               <td><%= order.table %></td>
               <td><%= order.user.name %></td>
               <td><span class="badge <%= status_klass(order.status) %>"><%= order.status_name %></span></td>
-              <td>
-                <%= link_to '<i class="fa-solid fa-search"></i>'.html_safe, order, class: "btn btn-info" %>
-                <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_order_path(order), class: "btn btn-secondary" %>
+              <td class="d-flex justify-content-end text-center">
+                <%= link_to '<i class="fa-solid fa-eye"></i>'.html_safe, order, class: "btn btn-secondary icons-margin" %>
+                <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_order_path(order), class: "btn btn-secondary icons-margin" %>
               </td>
             </tr>
           <% end %>
         </tbody>
-      </table>    
+      </table>
     </div>
-    <div class="card-footer">
     
-    </div>
+  </div>
 </div>
