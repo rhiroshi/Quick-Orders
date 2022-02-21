@@ -1,34 +1,37 @@
-<%= form_with(model: product) do |form| %>
 
-    <div class="form-group">
-        <%= form.label :name, "NOME" %>
-        <%= form.text_field :name, class: "form-control", placeholder: 'Insira o nome do produto' %>
+  
+  <%= form_with(model: product, class: 'row g-3') do |form| %>
+    <div class="col-md-4">
+      <%= form.label :name, "Nome", class: 'form-label' %>
+      <%= form.text_field :name, class: "form-control", placeholder: 'Insira um nome para o produto' %>
     </div>
-    <br>
-    <div class="form-group">
-        <%= form.label :description, "Descrição" %>
-        <%= form.text_field :description, class: "form-control", placeholder: 'Insira a descrição' %>
+    <div class="col-md-4">
+      <%= form.label :category_id, "Categoria", class: 'form-label' %>
+      <%= form.collection_select :category_id, Category.select("id, title"), :id, :title, {prompt: "Selecione a categoria"}, {class: "form-control" } %>
     </div>
-    <br>
-    <div class="form-group">
-        <%= form.label :price, "Preço" %>
+    <div class="col-md-4">
+      <%= form.label :price, "Preço", class: "form-label" %>
         <%= form.number_field :price, class: "form-control", placeholder: 'Insira o preço' %>
     </div>
-    <br>
-
-    <div class="form-group">
-        <%= form.label :category_id, "Categoria" %>
-         <%= form.collection_select :category_id, Category.select("id, title"), :id, :title, {prompt: "Selecione a categoria"}, {class: "form-control" } %>
-    </div>      
+    <div class="col-12">
+      <%= form.label :description, "Descrição", class: 'form-label' %>
+      <%= form.text_area :description, class: "form-control", placeholder: 'O que é este produto?' %>
+    </div>
+    
+    
     <br>
     <%= content_tag :div, class: 'form-group' do %>
         <%= check_box_tag :restore, class: "checkbox" %>
         Restaurar registro eliminado
     <% end if product.discarded? %>
-    <br>
 
-    <div class="form-group">
-        <%= form.submit "Registrar", class: "btn btn-secondary" %>
-        <%= link_to 'Voltar', products_path, class: "btn btn-warning" %>
+    <div class="col-12">
+      <%= link_to '<i class="fa-solid fa-arrow-left"></i>'.html_safe, products_path, class: "btn btn-secondary icons-margin" %>
+      <%= form.submit 'Registrar', class: "btn btn-primary icons-margin" %>
     </div>
-<% end %>
+  <% end %>
+
+
+
+
+  
