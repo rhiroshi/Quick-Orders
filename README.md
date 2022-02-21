@@ -1,6 +1,8 @@
 # Welcome Hackaton - Yellow Group
+Hackaton prometed by OneBiteCode https://www.onebitcode.com
 
 # Project Quick Orders
+![quick-orders](https://uploaddeimagens.com.br/images/003/738/506/original/quickorders.gif)
 
 ## Stack
 
@@ -21,6 +23,39 @@
 ## Set up
 
 1. Clone the project
+```
+git clone https://github.com/derikbf/Quick-Orders.git
+```
+```
+cd Quick-Orders
+```
 2. Install dependencies
-3. Configure .env file with your database information
-4. Create admin user with `rails create_user`
+``` 
+bundle install
+``` 
+``` 
+yarn install || npm install
+``` 
+
+3. Configure .env file with your database information. 
+<p> Create the .env file and configure:
+
+![Config-file-env](https://uploaddeimagens.com.br/images/003/738/298/full/env.png)
+
+4. Start the project
+```
+rails s
+```
+
+5. Create admin user with `rails create_user`. 
+Enter rails console
+
+```
+rails c
+```
+ 
+```
+User.create!(first_name: "Abc", last_name: "def", email: "abc@gmail.com", role: "admin", password: "Abc@123", password_confirmation: "Abc@123")
+```
+Role Options:
+admin || mesero || chef 
